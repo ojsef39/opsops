@@ -2,7 +2,7 @@ mod commands;
 mod util;
 use std::ffi::OsString;
 
-use clap::{Args, Parser, Subcommand, ValueEnum};
+use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)] // requires `derive` feature
 #[command(name = "simple-sops")]

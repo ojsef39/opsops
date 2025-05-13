@@ -1,6 +1,5 @@
 use git2::Repository;
-use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::PathBuf;
 
 pub fn find_project_root() -> Option<PathBuf> {
     // Root indicators to fall back on

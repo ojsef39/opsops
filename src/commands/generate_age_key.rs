@@ -1,9 +1,8 @@
-use age::{Identity, secrecy::ExposeSecret, x25519};
+use age::{secrecy::ExposeSecret, x25519};
 use colored::Colorize;
 use dialoguer::{Confirm, Input, theme::ColorfulTheme};
 
 use crate::util::{
-    self,
     op::{OpCategory, OpItem, OpItemField, op_item_create},
 };
 

@@ -2,12 +2,10 @@ use crate::util::op::{get_fields, get_items, get_vaults};
 use crate::util::sops_config::{get_sops_config, read_or_create_config, write_config};
 use crate::util::sops_structs::{CreationRule, SopsConfig};
 use colored::Colorize;
-use dialoguer::{Confirm, Input};
+use dialoguer::Confirm;
 use dialoguer::{FuzzySelect, theme::ColorfulTheme};
-use serde_yaml::{from_str, to_string};
-use std::fs::File;
-use std::io::{Read, Write};
-use std::path::Path;
+use serde_yaml::from_str;
+use std::io::Read;
 
 pub fn init() {
     match get_sops_config() {
@@ -46,7 +44,7 @@ pub fn init() {
                 .unwrap()
             {
                 // Create a minimal config with creation_rules
-                let mut config = SopsConfig {
+                let config = SopsConfig {
                     creation_rules: vec![
                         CreationRule {
                             path_regex: Some(".*".to_string()),

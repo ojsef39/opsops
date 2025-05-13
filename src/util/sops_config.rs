@@ -1,7 +1,6 @@
 use std::{
     fs::File,
     io::{Read, Write},
-    path::Path,
 };
 
 use super::sops_structs::{CreationRule, SopsConfig};

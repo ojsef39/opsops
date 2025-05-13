@@ -1,4 +1,4 @@
-use crate::util::sops_config::{get_sops_config, read_or_create_config};
+use crate::util::sops_config::read_or_create_config;
 use colored::Colorize;
 use std::process::Command;
 
