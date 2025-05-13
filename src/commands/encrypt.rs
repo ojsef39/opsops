@@ -2,9 +2,10 @@ use crate::util::sops_command::SopsCommandBuilder;
 use crate::util::sops_status::is_file_unchanged_status;
 use colored::Colorize;
 use std::ffi::OsString;
+use std::path::Path;
 
-/// Entry point for the `edit` command.
-pub fn edit(path: OsString) {
+/// Encrypts a file using SOPS with the Age key from 1Password
+pub fn encrypt(path: OsString) {
     // Convert the path from OsString to String
     let path_str = match path.into_string() {
         Ok(p) => p,
@@ -15,7 +16,7 @@ pub fn edit(path: OsString) {
     };
 
     // Check if the file exists
-    if !std::path::Path::new(&path_str).is_file() {
+    if !Path::new(&path_str).is_file() {
         eprintln!("{} {}", "❌ File not found:".red(), path_str);
         std::process::exit(1);
     }
@@ -30,10 +31,22 @@ pub fn edit(path: OsString) {
         std::process::exit(1);
     }
 
-    println!("{} {}", "📝 Opening file for editing:".green(), path_str);
+    // Create the encrypted output path (original + .enc)
+    let output_path = format!("{}.enc", path_str);
+    
+    println!(
+        "{} {} {} {}",
+        "🔐 Encrypting".green(),
+        path_str,
+        "to".green(),
+        output_path
+    );
 
     // Create a SOPS command with the Age key from 1Password
     let sops_command = match SopsCommandBuilder::new()
+        .arg("--encrypt")
+        .arg("--output")
+        .arg(&output_path)
         .arg(&path_str)
         .with_age_key()
     {
@@ -47,15 +60,20 @@ pub fn edit(path: OsString) {
     // Run the command
     match sops_command.status() {
         Ok(status) if status.success() => {
-            println!("{}", "✅ File edited and saved successfully.".green());
+            println!(
+                "{} {} {}",
+                "✅ Successfully encrypted file to".green(),
+                output_path,
+                "with SOPS".green()
+            );
         }
         Ok(status) if is_file_unchanged_status(&status) => {
-            println!("{}", "ℹ️ File has not changed.".blue());
+            println!("{} {}", "ℹ️ File has not changed.".blue(), output_path);
         }
         Ok(status) => {
             eprintln!(
                 "{} Exit code: {}",
-                "❌ Error while editing the file.".red(),
+                "❌ Error while encrypting the file.".red(),
                 status
             );
             std::process::exit(status.code().unwrap_or(1));

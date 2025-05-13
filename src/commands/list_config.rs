@@ -28,9 +28,11 @@ pub fn list_config() {
     };
 
     print!(
-        "{}",
-        "The .sops.yaml contains the following rules:\n".yellow()
+        "{} {}\n",
+        "Assigned 1Password item:".cyan(),
+        config.onepassworditem.green()
     );
+    print!("{}", "Rules:".cyan());
 
     for (i, rule) in config.creation_rules.iter().enumerate() {
         println!();

@@ -26,6 +26,18 @@ enum Commands {
         path: OsString,
     },
 
+    #[command(arg_required_else_help = true)]
+    Encrypt {
+        #[arg(value_name = "PATH", help = "Path to the file to encrypt")]
+        path: OsString,
+    },
+
+    #[command(arg_required_else_help = true)]
+    Decrypt {
+        #[arg(value_name = "PATH", help = "Path to the encrypted file to decrypt")]
+        path: OsString,
+    },
+
     Init {},
 }
 
@@ -36,6 +48,8 @@ fn main() {
         Commands::ListConfig {} => commands::list_config::list_config(),
         Commands::GenerateAgeKey {} => commands::generate_age_key::generate_age_key(),
         Commands::Edit { path } => commands::edit::edit(path),
+        Commands::Encrypt { path } => commands::encrypt::encrypt(path),
+        Commands::Decrypt { path } => commands::decrypt::decrypt(path),
         Commands::Init {} => commands::init::init(),
     }
 }
