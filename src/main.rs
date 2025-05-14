@@ -4,9 +4,9 @@ use std::ffi::OsString;
 
 use clap::{Parser, Subcommand};
 
-#[derive(Debug, Parser)] // requires `derive` feature
-#[command(name = "simple-sops")]
-#[command(about = "A simple wrapper around sops and age", long_about = None)]
+#[derive(Debug, Parser)]
+#[command(name = "easy_sops")]
+#[command(about = "A wrapper that integrates sops with 1Password", long_about = None)]
 struct Cli {
     #[command(subcommand)]
     command: Commands,
