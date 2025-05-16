@@ -51,6 +51,7 @@ opsops generate-age-key
 ```
 
 This will generate a new age key pair and store the private key securely in your 1Password vault.
+Afterwards you have to add the public key manually to the .sops.yaml you created in the previous step
 
 ### 2. Initialize OpSOPS in your project
 
@@ -59,7 +60,6 @@ opsops init
 ```
 
 This command will:
-- Create a `.sops.yaml` configuration file if it doesn't exist
 - Set up 1Password integration
 - Guide you through selecting the correct 1Password item
 
