@@ -1,10 +1,10 @@
-# OpsOps
+# OpSOPS
 
-OpsOps is a wrapper around [SOPS (Secrets OPerationS)](https://github.com/mozilla/sops) that uses 1Password for key management, making it easier to handle encrypted files and secrets in your projects.
+OpSOPS is a wrapper around [SOPS (Secrets OPerationS)](https://github.com/mozilla/sops) that uses 1Password for key management, making it easier to handle encrypted files and secrets in your projects.
 
 ## Overview
 
-OpsOps simplifies the process of encrypting, decrypting, and managing secrets by leveraging SOPS with 1Password integration. It handles key management automatically, allowing teams to securely share encrypted configuration without manual key distribution.
+OpSOPS simplifies the process of encrypting, decrypting, and managing secrets by leveraging SOPS with 1Password integration. It handles key management automatically, allowing teams to securely share encrypted configuration without manual key distribution.
 
 ## Installation
 
@@ -52,7 +52,7 @@ opsops generate-age-key
 
 This will generate a new age key pair and store the private key securely in your 1Password vault.
 
-### 2. Initialize OpsOps in your project
+### 2. Initialize OpSOPS in your project
 
 ```bash
 opsops init
@@ -119,7 +119,7 @@ To add a new team member:
 
 ## How It Works
 
-OpsOps provides a simplified interface to SOPS while handling all the key management through 1Password:
+OpSOPS provides a simplified interface to SOPS while handling all the key management through 1Password:
 
 1. When encrypting/decrypting, OpsOps retrieves the appropriate keys from 1Password
 2. It temporarily makes the keys available to SOPS
@@ -136,7 +136,7 @@ OpsOps provides a simplified interface to SOPS while handling all the key manage
 
 ### Debug Mode
 
-Run OpsOps with debug logging:
+Run OpSOPS with debug logging:
 
 ```bash
 RUST_LOG=debug opsops <command>
