@@ -364,21 +364,6 @@ dependencies = [
 ]
 
 [[package]]
-name = "easy_sops"
-version = "0.1.0"
-dependencies = [
- "age",
- "clap",
- "colored",
- "dialoguer",
- "git2",
- "serde",
- "serde_json",
- "serde_yaml",
- "which",
-]
-
-[[package]]
 name = "either"
 version = "1.15.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1031,6 +1016,21 @@ dependencies = [
  "libc",
  "pkg-config",
  "vcpkg",
+]
+
+[[package]]
+name = "opsops"
+version = "0.1.0"
+dependencies = [
+ "age",
+ "clap",
+ "colored",
+ "dialoguer",
+ "git2",
+ "serde",
+ "serde_json",
+ "serde_yaml",
+ "which",
 ]
 
 [[package]]

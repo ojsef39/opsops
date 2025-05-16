@@ -31,9 +31,8 @@ pub fn encrypt(path: OsString) {
         std::process::exit(1);
     }
 
-    // Create the encrypted output path (original + .enc)
-    let output_path = format!("{}.enc", path_str);
-    
+    let output_path = format!("{}", path_str);
+
     println!(
         "{} {} {} {}",
         "🔐 Encrypting".green(),
@@ -56,7 +55,7 @@ pub fn encrypt(path: OsString) {
             std::process::exit(1);
         }
     };
-    
+
     // Run the command
     match sops_command.status() {
         Ok(status) if status.success() => {

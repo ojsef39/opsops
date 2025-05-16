@@ -1,5 +1,5 @@
 [package]
-name = "easy_sops"
+name = "opsops"
 version = "0.1.0"
 edition = "2024"
 

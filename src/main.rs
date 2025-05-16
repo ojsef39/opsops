@@ -5,7 +5,7 @@ use std::ffi::OsString;
 use clap::{Parser, Subcommand};
 
 #[derive(Debug, Parser)]
-#[command(name = "easy_sops")]
+#[command(name = "opsops")]
 #[command(about = "A wrapper that integrates sops with 1Password", long_about = None)]
 struct Cli {
     #[command(subcommand)]
@@ -43,7 +43,7 @@ enum Commands {
         path: OsString,
     },
 
-    /// Initialize easy_sops
+    /// Initialize opsops
     Init {},
 }
 
