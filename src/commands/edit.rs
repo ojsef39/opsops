@@ -33,17 +33,14 @@ pub fn edit(path: OsString) {
     println!("{} {}", "📝 Opening file for editing:".green(), path_str);
 
     // Create a SOPS command with the Age key from 1Password
-    let sops_command = match SopsCommandBuilder::new()
-        .arg(&path_str)
-        .with_age_key()
-    {
+    let sops_command = match SopsCommandBuilder::new().arg(&path_str).with_age_key() {
         Ok(cmd) => cmd,
         Err(e) => {
             eprintln!("{} {}", "❌ Failed to get Age key:".red(), e);
             std::process::exit(1);
         }
     };
-    
+
     // Run the command
     match sops_command.status() {
         Ok(status) if status.success() => {

@@ -12,5 +12,6 @@ pkgs.mkShell {
     cargo-deny
     cargo-edit
     cargo-watch
+    just
   ];
 }

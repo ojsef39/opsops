@@ -15,14 +15,17 @@ pub fn init() {
                 eprintln!("{} {}", "❌ Failed to read config file:".red(), e);
                 return;
             }
-            
+
             // Check if onepassworditem field is missing
             if !contents.contains("onepassworditem") {
-                println!("{}", "⚠️  .sops.yaml exists but is missing onepassworditem field.".yellow());
+                println!(
+                    "{}",
+                    "⚠️  .sops.yaml exists but is missing onepassworditem field.".yellow()
+                );
                 assign_op_item();
                 return;
             }
-            
+
             let config: SopsConfig = match from_str(&contents) {
                 Ok(c) => c,
                 Err(e) => {
@@ -30,13 +33,13 @@ pub fn init() {
                     return;
                 }
             };
-            
+
             // Config file exists with onepassworditem field, do nothing
             println!("{}", "✅ .sops.yaml file exists. No action needed.".green());
         }
         None => {
             println!("{}", "❌ .sops.yaml is missing.".red());
-            
+
             if Confirm::with_theme(&ColorfulTheme::default())
                 .with_prompt("Would you like to create a basic .sops.yaml file?")
                 .default(true)
@@ -45,21 +48,19 @@ pub fn init() {
             {
                 // Create a minimal config with creation_rules
                 let config = SopsConfig {
-                    creation_rules: vec![
-                        CreationRule {
-                            path_regex: Some(".*".to_string()),
-                            age: None,
-                            key_groups: Vec::new(),
-                        }
-                    ],
+                    creation_rules: vec![CreationRule {
+                        path_regex: Some(".*".to_string()),
+                        age: None,
+                        key_groups: Vec::new(),
+                    }],
                     onepassworditem: String::new(),
                 };
-                
+
                 if let Err(e) = write_config(&config) {
                     eprintln!("{} {}", "❌ Failed to create config file:".red(), e);
                     return;
                 }
-                
+
                 println!("{}", "✅ Created basic .sops.yaml file.".green());
                 assign_op_item();
             } else {

@@ -144,18 +144,56 @@ RUST_LOG=debug opsops <command>
 
 ## Development
 
-- Pull this repo
-- For ease of use there is a flake.nix included
-- Simply run `direnv allow` and the flake should activate
-- If you don't have nix installed you will need cargo and rust
+### Using Nix
+
+```bash
+# Clone the repository
+git clone https://github.com/username/opsops.git
+cd opsops
+
+# If you have direnv installed
+direnv allow
+
+# Or manually activate the development environment
+nix develop
+```
+
+### Using Cargo
+
+```bash
+# Clone the repository
+git clone https://github.com/username/opsops.git
+cd opsops
+
+# Build the project
+cargo build
+
+# Run the tests
+cargo test
+```
+
+### Using Just
+
+The project includes a Justfile with common development tasks:
+
+```bash
+# List available commands
+just
+
+# Build the project (uses Nix if available, otherwise Cargo)
+just build
+
+# Run tests
+just test
+
+# Format code
+just fmt
+```
+
 
 ## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-MIT License
 
 ## Security
 

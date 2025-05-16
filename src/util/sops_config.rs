@@ -67,7 +67,7 @@ pub fn read_or_create_config() -> Result<SopsConfig, String> {
                                     creation_rules: partial.creation_rules,
                                     onepassworditem: String::new(),
                                 })
-                            },
+                            }
                             Err(e) => Err(format!("Failed to parse partial YAML config: {}", e)),
                         }
                     } else {
