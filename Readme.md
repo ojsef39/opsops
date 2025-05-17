@@ -201,3 +201,12 @@ OpsOps is designed with security in mind:
 - No keys are stored on disk in plaintext
 - All key material is fetched from 1Password just-in-time
 
+## TODO
+
+- [X] Automatically check if public age key in sops file matches the one in the 1password item
+    - [ ] If age keys don't offer to update
+- [ ] Add more options like specifying a key file or manually specifying a 1password item in-line
+- [ ] init should offer to generate a blank .sops.yaml if it doesn't exist.
+- [ ] Add autocomplete
+- [ ] Add set key command:
+    - ^(String|STRING) 

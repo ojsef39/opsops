@@ -8,8 +8,5 @@ creation_rules:
           - *key
           - *server
   - path_regex: .*\.(yaml|yml|json|env|ini|sops|txt)$
-    age: null
-    key_groups:
-          - age:
-                - age1kula8luezle3jds5mergwvtpmyu5s6tqnt3dzfxeuukuacq9xeds8lvfe7
+    age: age1kula8luezle3jds5mergwvtpmyu5s6tqnt3dzfxeuukuacq9xeds8lvfe7
 onepassworditem: op://Personal/test/Private Key
