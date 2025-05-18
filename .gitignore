@@ -1,5 +1,5 @@
 /target
 target/
 example.yaml
-/.direnv
 /result
+.direnv
